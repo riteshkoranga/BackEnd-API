@@ -33,10 +33,7 @@ jobs:
         ssh-keyscan ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
         rsync -avz --exclude=".git" ./ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/home/${{ secrets.SSH_USERNAME }}/app
 
-    - name: Install PM2
-      if: ${{ failure() != true }}  # Install PM2 only if previous steps succeeded
-      run: npm install -g pm2
-
+    
     - name: Restart server
       if: ${{ failure() != true }}  # Skip if any previous steps failed
       env:
