@@ -26,7 +26,7 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" >
           ~/.ssh/challenge13_key_0518.pem
 
-          chmod 600 ~/.ssh/challenge13_key_0518.pem
+          chmod 600 ~/.ssh/id_ed25519
 
 
           ssh-keyscan ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
