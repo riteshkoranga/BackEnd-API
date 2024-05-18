@@ -33,6 +33,10 @@ jobs:
         ssh-keyscan ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
         rsync -avz --exclude=".git" ./ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/home/${{ secrets.SSH_USERNAME }}/app
 
+    - name: Install PM2
+      if: ${{ failure() != true }}  # Install PM2 only if previous steps succeeded
+      run: npm install -g pm2
+
     - name: Restart server
       if: ${{ failure() != true }}  # Skip if any previous steps failed
       env:
@@ -44,41 +48,43 @@ jobs:
           pm2 stop all || true
           pm2 start index.js --name "backend-api" --watch
         EOF
-notifications:
-  failure:
-    if: failure()
-    name: Send Failure Notification
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send email notification
-        uses: dawidd6/action-send-mail@v2
-        with:
-          server_address: smtp.example.com
-          server_port: 587
-          username: '${{ secrets.EMAIL_USERNAME }}'
-          password: '${{ secrets.EMAIL_PASSWORD }}'
-          subject: 'Workflow Failed - ${{ github.repository }}'
-          to: your@email.com
-          from: your@email.com
-          body: >
-            The workflow for ${{ github.repository }} on branch ${{ github.ref
-            }} failed.
-  success:
-    if: success()
-    name: Send Success Notification
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send email notification
-        uses: dawidd6/action-send-mail@v2
-        with:
-          server_address: smtp.example.com
-          server_port: 587
-          username: '${{ secrets.EMAIL_USERNAME }}'
-          password: '${{ secrets.EMAIL_PASSWORD }}'
-          subject: 'Workflow Succeeded - ${{ github.repository }}'
-          to: your@email.com
-          from: your@email.com
-          body: >
-            The workflow for ${{ github.repository }} on branch ${{ github.ref
-            }} succeeded.
 
+
+    # notifications:
+  #   # Send notification when workflow fails
+  #   failure:
+  #     if: always()  # Send notification even if the workflow fails
+  #     name: Send Failure Notification
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - name: Send email notification
+  #         uses: dawidd6/action-send-mail@v2
+  #         with:
+  #           server_address: smtp.example.com
+  #           server_port: 587
+  #           username: ${{ secrets.EMAIL_USERNAME }}
+  #           password: ${{ secrets.EMAIL_PASSWORD }}
+  #           subject: "Workflow Failed - ${{ github.repository }}"
+  #           to: your@email.com
+  #           from: your@email.com
+  #           body: |
+  #             The workflow for ${{ github.repository }} on branch ${{ github.ref }} failed.
+  # 
+  #   # Send notification when workflow succeeds
+  #   success:
+  #     if: always() && success()  # Send notification only if the workflow succeeded
+  #     name: Send Success Notification
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - name: Send email notification
+  #         uses: dawidd6/action-send-mail@v2
+  #         with:
+  #           server_address: smtp.example.com
+  #           server_port: 587
+  #           username: ${{ secrets.EMAIL_USERNAME }}
+  #           password: ${{ secrets.EMAIL_PASSWORD }}
+  #           subject: "Workflow Succeeded - ${{ github.repository }}"
+  #           to: your@email.com
+  #           from: your@email.com
+  #           body: |
+  #             The workflow for ${{ github.repository }} on branch ${{ github.ref }} succeeded.
