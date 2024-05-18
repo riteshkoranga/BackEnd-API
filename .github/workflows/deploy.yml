@@ -44,11 +44,12 @@ jobs:
         SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
       run: |
         ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-        ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-        cd /home/${{ secrets.SSH_USERNAME }}/app
+         ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
+         cd /home/${{ secrets.SSH_USERNAME }}/app
        
-        pkill -f "node index.js" || true
-        nohup node index.js &
+         pkill -f "node index.js" || true
+         nohup node index.js &
+        EOF
 
 
 
