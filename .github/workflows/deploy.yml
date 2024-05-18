@@ -33,6 +33,9 @@ jobs:
 
           rsync -avz --exclude=".git" ./ ${{ secrets.SSH_USERNAME }}@${{
           secrets.SSH_HOST }}:/home/${{ secrets.SSH_USERNAME }}/app
+
+      - name: Install PM2
+        run: npm install -g pm2
       - name: Restart server
         env:
           SSH_HOST: '${{ secrets.SSH_HOST }}'
