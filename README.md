@@ -39,7 +39,7 @@ POSTMAN:
 - Send a GET request to the folowing address:<br>
     http://20.244.91.38/sayHello
 
-Termianl(Linux):
+Terminal(Linux):
 - Access the API with the curl command:<br>
     curl http://20.244.91.38/sayHello
 
@@ -47,6 +47,6 @@ Termianl(Linux):
     sudo apt update<br>
     sudo apt install curl
 
-Web Browser
+Web Browser:
 - Access the API via browser, just enter the following address to the search panel.<br>
     http://20.244.91.38/sayHello
