@@ -48,43 +48,22 @@ jobs:
          nohup node index.js &
         EOF
 
+      #Notification Section (tells us if the workflow was success or failure) 
+    - name: Send Notification
+      if: ${{ github.event.workflow_run.conclusion == 'success' }}
+      run: |
+        echo "Workflow succeeded - Code copied to Virtual Machine/Server"
+        # Add your notification command here, such as sending an email or using a messaging service
+    - name: Send Notification
+      if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+      run: |
+        echo "Workflow failed"
+        # Add your notification command here, such as sending an email or using a messaging service
+        
+        
 
 
-    # notifications:
-  #   # Send notification when workflow fails
-  #   failure:
-  #     if: always()  # Send notification even if the workflow fails
-  #     name: Send Failure Notification
-  #     runs-on: ubuntu-latest
-  #     steps:
-  #       - name: Send email notification
-  #         uses: dawidd6/action-send-mail@v2
-  #         with:
-  #           server_address: smtp.example.com
-  #           server_port: 587
-  #           username: ${{ secrets.EMAIL_USERNAME }}
-  #           password: ${{ secrets.EMAIL_PASSWORD }}
-  #           subject: "Workflow Failed - ${{ github.repository }}"
-  #           to: your@email.com
-  #           from: your@email.com
-  #           body: |
-  #             The workflow for ${{ github.repository }} on branch ${{ github.ref }} failed.
-  # 
-  #   # Send notification when workflow succeeds
-  #   success:
-  #     if: always() && success()  # Send notification only if the workflow succeeded
-  #     name: Send Success Notification
-  #     runs-on: ubuntu-latest
-  #     steps:
-  #       - name: Send email notification
-  #         uses: dawidd6/action-send-mail@v2
-  #         with:
-  #           server_address: smtp.example.com
-  #           server_port: 587
-  #           username: ${{ secrets.EMAIL_USERNAME }}
-  #           password: ${{ secrets.EMAIL_PASSWORD }}
-  #           subject: "Workflow Succeeded - ${{ github.repository }}"
-  #           to: your@email.com
-  #           from: your@email.com
-  #           body: |
-  #             The workflow for ${{ github.repository }} on branch ${{ github.ref }} succeeded.
+      
+   
+     
+            
