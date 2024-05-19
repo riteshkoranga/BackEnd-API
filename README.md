@@ -1,10 +1,10 @@
-Language used: JavaScript
-Framework used: Express.js
+- Language used: JavaScript
+- Framework used: Express.js
 - The code uses the Express framework, which needs to be installed via npm (Node Package Manager). This is done using the command npm install express.
 
-The IP Address is : 20.244.91.38
-Route : /sayHello
-Port: 80
+- The IP Address is : 20.244.91.38
+- Route : /sayHello
+- Port: 80
 
 To Deploy the API on the server/Virtual Machine you need to remotly access the virtual machine,
 - Command to access virtual machine remotly: 
