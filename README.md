@@ -8,7 +8,7 @@
 
 To Deploy the API on the server/Virtual Machine you need to remotly access the virtual machine,
 - Command to access virtual machine remotly: <br>
-      ssh -v -u ssh_key username@hostname
+      ssh -v -i ssh_key username@hostname
   
 - Now enter the directory where the API files are copied to using cd command: <br>
        cd directory_name
@@ -33,7 +33,7 @@ Your Virtual machine should be running on port 80 and you can access it via inte
 NOTE: Ports below 1024 require elevated privileges to bind on most operating systems. Running this script might require using sudo on Unix-like systems.
       You will have to free the process at port 80 if it is already in use.
 
-You can Access the Backend API via POSTMAN, Web browser, Terminal(linux)
+You can Access the Backend API via POSTMAN, Web browser, Terminal(linux).
 
 POSTMAN:
 - Send a GET request to the folowing address:<br>
