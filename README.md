@@ -14,9 +14,9 @@ To Deploy the API on the server/Virtual Machine you need to remotly access the v
        cd directory_name
   
 - Check if node is installed:<br> 
-       node -version
+       node --version
   
-- If not installed install it using command:<br>
+- If node not installed install it using command:<br>
        sudo apt-get install -y nodejs
   
 - Check if express.js is installed:<br>
