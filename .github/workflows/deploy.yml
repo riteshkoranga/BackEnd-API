@@ -48,18 +48,39 @@ jobs:
         EOF
 
     #Notification Section (tells us if the workflow was success or failure) 
+ 
  send-notification:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Send Notification
+      - name: Send Success Notification
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
-        run: |
-          echo "Workflow succeeded"
-          
-      - name: Send Notification
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Workflow Success Notification"
+          body: "The workflow executed successfully - Code is copied to the Virtual Machine/Server"
+          to: "riteshkoranga5@gmail.com"
+          from: "deployment2610@gmail.com"
+          secure: true
+
+      - name: Send Failure Notification
         if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-        run: |
-          echo "Workflow failed"
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Workflow Failure Notification"
+          body: "The workflow encountered an error and failed."
+          to: "riteshkoranga5@gmail.com"
+          from: "deployment2610@gmail.com"
+          secure: true
+
          
 
     
