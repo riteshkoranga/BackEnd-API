@@ -7,8 +7,8 @@
 - Port: 80
 
 To Deploy the API on the server/Virtual Machine you need to remotly access the virtual machine,
-- Command to access virtual machine remotly: 
-      - ssh -v -u ssh_key username@hostname
+- Command to access virtual machine remotly: <br>
+      ssh -v -u ssh_key username@hostname
   
 - Now enter the directory where the API files are copied to using cd command
       - cd directory_name
