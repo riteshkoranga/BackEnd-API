@@ -21,7 +21,7 @@ To Deploy the API on the server/Virtual Machine you need to remotly access the v
   
 - Check if express.js is installed:<br>
        npx express --version<br>
-  If not installed ,install it using command:<br>
+  If not installed, install it using command:<br>
                npm init -y<br>
                npm install express
   
