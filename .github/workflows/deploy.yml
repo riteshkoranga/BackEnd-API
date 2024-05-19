@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+ deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,21 +32,7 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
         rsync -avz --exclude=".git" ./ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/home/${{ secrets.SSH_USERNAME }}/app
-
-
-    #Notification Section (tells us if the workflow was success or failure) 
-    - name: Send Notification
-      if: ${{ github.event.workflow_run.conclusion == 'success' }}
-      run: |
-        echo "Workflow succeeded - Code copied to Virtual Machine/Server"
-        # Add your notification command here, such as sending an email or using a messaging service
-    - name: Send Notification
-      if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-      run: |
-        echo "Workflow failed"
-        # Add your notification command here, such as sending an email or using a messaging service
-
-    
+        
     - name: Restart server
       if: ${{ failure() != true }}  # Skip if any previous steps failed
       env:
@@ -60,6 +46,25 @@ jobs:
          pkill -f "node index.js" || true
          nohup node index.js &
         EOF
+
+    #Notification Section (tells us if the workflow was success or failure) 
+ send-notification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Notification
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        run: |
+          echo "Workflow succeeded"
+          # Add your notification command here, such as sending an email or using a messaging service
+      - name: Send Notification
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        run: |
+          echo "Workflow failed"
+          # Add your notification command here, such as sending an email or using a messaging service
+
+
+    
+    
 
       
         
