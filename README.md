@@ -10,23 +10,23 @@ To Deploy the API on the server/Virtual Machine you need to remotly access the v
 - Command to access virtual machine remotly: <br>
       ssh -v -u ssh_key username@hostname
   
-- Now enter the directory where the API files are copied to using cd command
-      - cd directory_name
+- Now enter the directory where the API files are copied to using cd command: <br>
+       cd directory_name
   
-- Check if node is installed:
-      - node -version
+- Check if node is installed:<br> 
+       node -version
   
-- If not installed install it using command:
-      - sudo apt-get install -y nodejs
+- If not installed install it using command:<br>
+       sudo apt-get install -y nodejs
   
-- Check if express.js is installed:
-      - npx express --version
-        if not installed ,install it using command:
-              - npm init -y
-              - npm install express
+- Check if express.js is installed:<br>
+       npx express --version
+        if not installed ,install it using command:<br>
+               npm init -y
+               npm install express
   
-- Now run the command:
-      - sudo node index.js(or whatever your API file name is)
+- Now run the command:<br>
+       sudo node index.js(or whatever your API file name is)
   
 Your Virtual machine should be running on port 80 and you can access it via internet.       
 
@@ -36,17 +36,17 @@ NOTE: Ports below 1024 require elevated privileges to bind on most operating sys
 You can Access the Backend API via POSTMAN, Web browser, Terminal(linux)
 
 POSTMAN:
-- Send a GET request to the folowing address:
+- Send a GET request to the folowing address:<br>
     http://20.244.91.38/sayHello
 
 Termianl(Linux):
-- Access the API with the curl command:
+- Access the API with the curl command:<br>
     curl http://20.244.91.38/sayHello
 
-  If curl is not intalled, install it with command:-
+  If curl is not intalled, install it with command:<br>
     sudo apt update
     sudo apt install curl
 
 Web Browser
-- Access the API via browser, just enter the following address to the search panel.
+- Access the API via browser, just enter the following address to the search panel.<br>
     http://20.244.91.38/sayHello
