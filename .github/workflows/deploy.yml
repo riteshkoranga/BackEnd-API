@@ -64,7 +64,7 @@ jobs:
           subject: "Workflow Success Notification"
           body: "The workflow executed successfully - Code is copied to the Virtual Machine/Server"
           to: "riteshkoranga5@gmail.com"
-          from: "deployment2610@gmail.com"
+          from: ${{ secrets.EMAIL_USERNAME }}
           secure: true
 
       - name: Send Failure Notification
@@ -78,7 +78,7 @@ jobs:
           subject: "Workflow Failure Notification"
           body: "The workflow encountered an error and failed."
           to: "riteshkoranga5@gmail.com"
-          from: "deployment2610@gmail.com"
+          from: ${{ secrets.EMAIL_USERNAME }}
           secure: true
 
          
