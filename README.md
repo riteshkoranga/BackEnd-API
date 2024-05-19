@@ -43,7 +43,7 @@ Terminal(Linux):
 - Access the API with the curl command:<br>
     curl http://20.244.91.38/sayHello
 
-  If curl is not intalled, install it with command:<br>
+  If curl is not installed, install it with command:<br>
     sudo apt update<br>
     sudo apt install curl
 
