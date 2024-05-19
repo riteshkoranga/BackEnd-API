@@ -22,7 +22,7 @@ To Deploy the API on the server/Virtual Machine you need to remotly access the v
 - Check if express.js is installed:<br>
        npx express --version<br>
   If not installed ,install it using command:<br>
-               npm init -y
+               npm init -y<br>
                npm install express
   
 - Now run the command:<br>
@@ -44,7 +44,7 @@ Termianl(Linux):
     curl http://20.244.91.38/sayHello
 
   If curl is not intalled, install it with command:<br>
-    sudo apt update
+    sudo apt update<br>
     sudo apt install curl
 
 Web Browser
