@@ -2,16 +2,7 @@
 - Framework used: Express.js
 - The code uses the Express framework, which needs to be installed via npm (Node Package Manager). This is done using the command npm install express.
 
-- The IP Address is : 20.244.91.38
-- Route : /sayHello
-- Port: 80
 
-To Deploy the API on the server/Virtual Machine you need to remotly access the virtual machine,
-- Command to access virtual machine remotly: <br>
-      ssh -v -i ssh_key username@hostname
-  
-- Now enter the directory where the API files are copied to using cd command: <br>
-       cd directory_name
   
 - Check if node is installed:<br> 
        node --version
@@ -25,10 +16,12 @@ To Deploy the API on the server/Virtual Machine you need to remotly access the v
                npm init -y<br>
                npm install express
   
-- Now run the command:<br>
-       sudo node index.js(or whatever your API file name is)
-  
-Your Virtual machine should be running on port 80 and you can access it via internet.       
+- Now clone the repository to the directory you want:<br>
+      git clone https://github.com/riteshkoranga/BackEnd-API<br>
+
+  Run:<br>
+        sudo node index.js<br>
+  The API will be running on the local machine on port 80.
 
 NOTE: Ports below 1024 require elevated privileges to bind on most operating systems. Running this script might require using sudo on Unix-like systems.
       You will have to free the process at port 80 if it is already in use.
@@ -37,16 +30,15 @@ You can Access the Backend API via POSTMAN, Web browser, Terminal(linux).
 
 POSTMAN:
 - Send a GET request to the folowing address:<br>
-    http://20.244.91.38/sayHello
+    http://localhost/sayHello
 
 Terminal(Linux):
 - Access the API with the curl command:<br>
-    curl http://20.244.91.38/sayHello
-
+    curl http://localhost/sayHello
   If curl is not installed, install it with command:<br>
     sudo apt update<br>
     sudo apt install curl
 
 Web Browser:
 - Access the API via browser, just enter the following address to the search panel.<br>
-    http://20.244.91.38/sayHello
+    http://localhost/sayHello
